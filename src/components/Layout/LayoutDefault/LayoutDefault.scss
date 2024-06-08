@@ -1,0 +1,229 @@
+.layout-default {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__apply {
+    background-color: #13547a;
+    border: 1px solid #fff;
+  }
+
+  &__LogIn {
+    color: #13547a;
+  }
+
+  &__SignUp {
+    background-color: #13547a;
+  }
+
+  &__header {
+    background: linear-gradient(50deg, #13547a 0%, #80d0c7 100%);
+    padding: 20px 0;
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-size: 30px;
+    font-weight: 800;
+
+    a {
+      color: #6fbfed;
+    }
+  }
+
+  &__center {
+    text-align: center;
+  }
+
+  &__main {
+    flex: 1;
+    overflow-y: auto;
+    background: linear-gradient(50deg, #13547a 0%, #80d0c7 100%);
+    margin: 1px 0;
+
+    // Search form
+    &__titleSearch {
+      color: #024870;
+      text-align: center;
+      font-size: 36px;
+    }
+
+    &__btnSearch {
+      background-color: #13547a;
+    }
+
+    //Tag
+    &__listTag {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    &__tag {
+      background-color: #13547a;
+      color: #fff;
+      width: 70px;
+      text-align: center;
+      padding: 5px 0;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    &__tag:hover {
+      background-color: #59ead9;
+      color: #000;
+    }
+
+    // List company
+    &__itemCompany {
+      height: 200px;
+      color: #fff;
+      background-color: #014a73;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    &__itemCompanyDetail {
+      height: 260px;
+      color: #fff;
+      background-color: #014a73;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    &__itemCompany:hover {
+      margin-top: -10px;
+      background-color: #59ead9;
+      color: #000;
+    }
+
+    &__itemCompanyDetail:hover {
+      margin-top: -10px;
+      background-color: #59ead9;
+      color: #000;
+    }
+
+    &__detail {
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0 !important;
+    }
+
+    &__detailBottom {
+      line-height: 20px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__detailBottomLeft {
+      font-size: 14px;
+      width: 100%;
+      margin-right: 10px;
+      border-right: 1px solid #fff;
+      padding-right: 5px;
+    }
+
+    &__detailBottomLeftDetail {
+      font-size: 16px;
+      color: white;
+      width: 250%;
+      margin-right: 20px;
+      border-right: 1px solid #fff;
+      padding-right: 5px;
+    }
+
+    &__detailBottomRight {
+      font-size: 15px;
+    }
+
+    &__detailBottomRightDetail {
+      color: white;
+      font-size: 15px;
+    }
+
+    &__detailBottomIcon {
+      font-size: 22px;
+    }
+  }
+
+  &__detailCompany {
+    &__title {
+      text-align: center;
+    }
+  }
+
+  &__tagSearch {
+    color: white;
+    font-weight: 600;
+  }
+
+  &__itemSearch {
+    height: 280px;
+    background-color: #014a73;
+    border: none;
+    color: #42b1f1;
+    font-weight: 600;
+
+    &__main {
+      display: flex;
+
+      &__left {
+        width: 100%;
+        border-right: 1px solid #fff;
+        margin-right: 10px;
+      }
+
+      &__right {}
+    }
+  }
+
+  &__footer {
+    padding: 15px 0;
+    text-align: center;
+    background: linear-gradient(50deg, #13547a 0%, #80d0c7 100%);
+    color: #fff;
+  }
+}
+
+strong {
+  color: #fff;
+  font-size: 18px;
+}
+
+.white {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.blue {
+  color: #6df6f2 !important;
+  font-weight: 600;
+}
+
+h1 {
+  color: #fff;
+}
+
+.border {
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.left {
+  width: 200vw;
+  margin-right: 30px;
+}
+
+.Apply_form {
+  background: linear-gradient(50deg, #2a7dad 0%, #80d0c7 100%);
+  margin-bottom: 20px;
+}
