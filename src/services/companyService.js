@@ -1,26 +1,13 @@
-import { GetdbLogin, get1, patch, post } from "../utils/request";
+import { Getdb1, GetdbLogin, get1, patch, post } from "../utils/request";
 import { Getdb } from "../utils/request";
 export const login = async (email, password = "") => {
-  console.log(email);
-  email = email.replace('@', '_').replace('.', '_');
-  console.log(email);
   let pass = "";
   if (password !== "") {
     pass = `&password=${password}`;
   }
-  const result = await GetdbLogin(`company?email=${email}${pass}`);
+  const result = await get1(`company?email=${email}${pass}`);
+  console.log(result);
   return result;
-
-  // try {
-  //   const data = await Getdb(`company?email=${email}${pass}`);
-  //   console.log(data);
-  //   return data;
-  // } catch (error) {
-  //   console.error('Error:', error);
-  // }
-  // const result = await get(`company?email=${email}${pass}`);
-  // console.log(result);
-  // return result;
 };
 
 export const checkExist = async (type, value) => {
@@ -35,16 +22,34 @@ export const createCompany = async (options) => {
 
 export const getDetailCompany = async (id) => {
   try {
-    const data = await Getdb(`company/${id}`);
-    return data;
-    // Sử dụng data ở đây
+    const resultNew = await Getdb(`company/${parseInt(id) - 1}`);
+    if (resultNew === null) {
+      console.error('No data found in resultNew');
+      // Xử lý trường hợp không có dữ liệu ở đây
+    } else {
+      console.log('Result from Getdb:', resultNew);
+      const result = resultNew;
+      console.log(result);
+      return result;
+      // return resultNew
+      // Điều chỉnh code của bạn dựa trên kết quả resultNew ở đây
+    }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error while getting data from Getdb:', error);
+    // Xử lý lỗi tại đây
   }
+  // try {
+  //   const result1 = await Getdb(`company/${id}`);
+  //   console.log(result1);
+  //   return result1;
+  // } catch (error) {
+  //   console.error('Error:', error);
+  // }
 };
 
 export const editCompany = async (id, options) => {
   const result = await patch(`company/${id}`, options);
+  console.log(result);
   return result;
 };
 
@@ -52,7 +57,6 @@ export const getAllCompany = async () => {
   try {
     const data = await Getdb('company');
     return data;
-    // Sử dụng data ở đây
   } catch (error) {
     console.error('Error:', error);
   }

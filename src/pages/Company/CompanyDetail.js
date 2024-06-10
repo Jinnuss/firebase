@@ -9,12 +9,15 @@ import GoBack from "../../components/GoBack";
 
 function CompanyDetail() {
   const params = useParams();
+  console.log(params.id);
   const [infoCompany, setInfoCompany] = useState();
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
       const response = await getDetailCompany(params.id);
+      console.log(params.id);
+      console.log(response);
       setInfoCompany(response);
     };
     fetchApi();
@@ -23,6 +26,7 @@ function CompanyDetail() {
   useEffect(() => {
     const fetchApi = async () => {
       const response = await getListJob(params.id);
+      console.log(response);
       setJobs(response);
     };
     fetchApi();

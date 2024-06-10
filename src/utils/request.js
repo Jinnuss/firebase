@@ -16,11 +16,37 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase();
 
-const fetchData = async (db, path) => {
-  return await new Promise((resolve, reject) => {
+// const fetchData = (db, path) => {
+//   return new Promise((resolve, reject) => {
+//     onValue(ref(db, path), (snapshot) => {
+//       const result = snapshot.val();
+//       resolve(result);
+//     }, (error) => {
+//       reject(error);
+//     });
+//   });
+// }
+// export const Getdb = async (path) => {
+//   try {
+//     const resultNew = await fetchData(db, path);
+//     console.log('Updated resultNew:', resultNew);
+//     return resultNew;
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     throw error;
+//   }
+// }
+export const fetchData = (db, path) => {
+  return new Promise((resolve, reject) => {
     onValue(ref(db, path), (snapshot) => {
+      // console.log(path);
       const result = snapshot.val();
-      resolve(result);
+      // console.log(snapshot.val());
+      if (result !== null) {
+        resolve(result);
+      } else {
+        reject(new Error("No data found"));
+      }
     }, (error) => {
       reject(error);
     });
@@ -29,23 +55,23 @@ const fetchData = async (db, path) => {
 export const Getdb = async (path) => {
   try {
     const resultNew = await fetchData(db, path);
-    console.log('Updated resultNew:', resultNew);
+    // console.log('Updated resultNew:', resultNew);
     return resultNew;
   } catch (error) {
     console.error('Error fetching data:', error);
-    throw error;
+    throw error; // Đảm bảo lỗi được xử lý bên ngoài
   }
 }
-export const GetdbLogin = async (path) => {
-  onValue(ref(db, `company?password='123456'`), (snapshot) => {
-    console.log(snapshot.val());
-    snapshot.forEach((childsnapshot) => {
-      const chilData = childsnapshot.val();
-      console.log(chilData);
-    });
-  });
+// export const GetdbLogin = async (path) => {
+//   onValue(ref(db, `company?password='123456'`), (snapshot) => {
+//     console.log(snapshot.val());
+//     snapshot.forEach((childsnapshot) => {
+//       const chilData = childsnapshot.val();
+//       console.log(chilData);
+//     });
+//   });
 
-}
+// }
 
 const API_DOMAIN = "http://localhost:3002/";
 

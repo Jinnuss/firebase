@@ -17,8 +17,12 @@ export const deleteJob = async (id) => {
 
 export const getListJob = async (id) => {
   try {
-    const data = await Getdb(`jobs?idCompany=${id}`);
-    return data;
+    const data = await Getdb(`jobs`);
+    const newData = data.filter(item => {
+      return parseInt(item.idCompany) === parseInt(id);
+    })
+    console.log(newData);
+    return newData;
     // Sử dụng data ở đây
   } catch (error) {
     console.error('Error:', error);
