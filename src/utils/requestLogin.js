@@ -1,4 +1,4 @@
-import { getDatabase, ref, query, orderByChild, equalTo, onValue } from 'firebase/database';
+import { getDatabase, ref, query, orderByChild, equalTo, onValue, set } from 'firebase/database';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
@@ -34,7 +34,6 @@ export const fetchData = (db, path, childKey, value) => {
 }
 
 export const GetdbLogin = async (path, childKey, value) => {
-    const db = getDatabase();
     try {
         const resultNew = await fetchData(db, path, childKey, value);
         console.log(resultNew);
@@ -42,5 +41,30 @@ export const GetdbLogin = async (path, childKey, value) => {
     } catch (error) {
         console.error('Error fetching data:', error);
         throw error; // Đảm bảo lỗi được xử lý bên ngoài
+    }
+}
+
+export const PostDBRegister = async (path, values) => {
+    const id = Date.now();
+    const token1 = Date.now();
+    console.log(path);
+    try {
+        await set(ref(db, 'company/' + id), {
+            id: id,
+            companyName: values.companyName,
+            email: values.email,
+            phone: values.phone,
+            password: values.password,
+            token: `${token1}`,
+            address: 'Địa chỉ công ty',
+            description: 'Miêu tả công ty',
+            detail: 'Chi tiết công ty',
+            quantityPeople: 90,
+            website: 'Link website công ty',
+            workingTime: 'Thời gian làm việc',
+        });
+        console.log('Data saved successfully!');
+    } catch (error) {
+        console.error('Error saving data:', error);
     }
 }

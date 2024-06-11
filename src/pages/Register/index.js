@@ -10,19 +10,19 @@ function Register() {
 
   const onFinish = async (values) => {
     values.token = generateToken();
-
+    console.log(values);
     const checkExistEmail = await company.checkExist("email", values.email);
     const checkExistPhone = await company.checkExist("phone", values.phone);
-
-    if (checkExistEmail.length > 0) {
+    console.log(checkExistEmail);
+    if (checkExistEmail) {
       messageApi.error("Email đã tồn tại!");
-    } else if (checkExistPhone.length > 0) {
+    } else if (checkExistPhone) {
       messageApi.error("Số điện thoại đã tồn tại!");
     } else {
       const result = await company.createCompany(values);
-      if (result) {
-        navigate("/login");
-      }
+      console.log(result);
+
+      navigate("/login");
     }
   };
 

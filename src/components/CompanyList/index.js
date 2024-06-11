@@ -11,7 +11,8 @@ function CompanyList() {
     const fetchApi = async () => {
       const response = await getAllCompany();
       if (response) {
-        setData(response);
+        const companyList = Object.keys(response).map(key => response[key]);
+        setData(companyList);
       }
     };
     fetchApi();

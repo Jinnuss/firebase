@@ -1,6 +1,6 @@
 import { get1, patch, post } from "../utils/request";
 import { Getdb } from "../utils/request";
-import { GetdbLogin } from "../utils/requestLogin";
+import { GetdbLogin, PostDBRegister } from "../utils/requestLogin";
 export const login = async (email, password) => {
   const childKey = 'email';
   const value = email;
@@ -23,12 +23,24 @@ export const login = async (email, password) => {
 };
 
 export const checkExist = async (type, value) => {
-  const result = await get1(`company?${type}=${value}`);
-  return result;
+  try {
+    const data = await Getdb('company', type, value);
+    for (const key in data) {
+      if (data[key][type] === value) {
+        const newData = data[key];
+        console.log(newData);
+        return newData;
+      }
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  // const result = await get1(`company?${type}=${value}`);
+  // return result;
 };
 
-export const createCompany = async (options) => {
-  const result = await post(`company`, options);
+export const createCompany = async (values) => {
+  const result = await PostDBRegister(`company`, values);
   return result;
 };
 
@@ -68,6 +80,7 @@ export const editCompany = async (id, options) => {
 export const getAllCompany = async () => {
   try {
     const data = await Getdb('company');
+    console.log(data);
     return data;
   } catch (error) {
     console.error('Error:', error);
