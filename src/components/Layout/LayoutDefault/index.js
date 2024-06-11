@@ -2,8 +2,8 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
-import "./LayoutDefault.scss";
 import { useSelector } from "react-redux";
+import './LayoutDefault.scss';
 
 function LayoutDefault() {
   const authen = useSelector((state) => state.authenReducer);
