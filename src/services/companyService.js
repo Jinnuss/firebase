@@ -1,13 +1,25 @@
-import { Getdb1, GetdbLogin, get1, patch, post } from "../utils/request";
+import { get1, patch, post } from "../utils/request";
 import { Getdb } from "../utils/request";
-export const login = async (email, password = "") => {
-  let pass = "";
-  if (password !== "") {
-    pass = `&password=${password}`;
+import { GetdbLogin } from "../utils/requestLogin";
+export const login = async (email, password) => {
+  const childKey = 'email';
+  const value = email;
+  console.log(value);
+  try {
+    const data = await Getdb('company', childKey, value);
+    for (const key in data) {
+      if (data[key].email === email) {
+        const newData = [data[key]];
+        console.log(newData);
+        return newData;
+      }
+    }
+  } catch (error) {
+    console.error('Error:', error);
   }
-  const result = await get1(`company?email=${email}${pass}`);
-  console.log(result);
-  return result;
+  // const result = await Getdb(`company?email=${email}${pass}`);
+  // console.log(result);
+  // return result;
 };
 
 export const checkExist = async (type, value) => {

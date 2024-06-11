@@ -14,7 +14,8 @@ function Login() {
 
   const onFinish = async (values) => {
     console.log(values.email);
-    const data = await login(values.email, values.password);
+    const data = await login(values.email, values.Password);
+    console.log(data.length);
     if (data && data.length > 0) {
       const time = 1;
       setCookie("id", data[0].id, time);
