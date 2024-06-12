@@ -140,3 +140,13 @@ export const delJob = (id) => {
             console.error('Error deleting data:', error);
         });
 };
+export const delCV = (id) => {
+    const dbRef = ref(db, 'cv/' + id);
+    remove(dbRef)
+        .then(() => {
+            console.log('Data deleted successfully');
+        })
+        .catch((error) => {
+            console.error('Error deleting data:', error);
+        });
+};
