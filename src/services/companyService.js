@@ -1,6 +1,6 @@
 import { get1, patch, post } from "../utils/request";
 import { Getdb } from "../utils/request";
-import { GetdbLogin, PostDBRegister } from "../utils/requestLogin";
+import { GetdbLogin, PostDBRegister, updateCompany } from "../utils/requestLogin";
 export const login = async (email, password) => {
   const childKey = 'email';
   const value = email;
@@ -45,8 +45,9 @@ export const createCompany = async (values) => {
 };
 
 export const getDetailCompany = async (id) => {
+  console.log(id);
   try {
-    const resultNew = await Getdb(`company/${parseInt(id) - 1}`);
+    const resultNew = await Getdb(`company/${parseInt(id)}`);
     if (resultNew === null) {
       console.error('No data found in resultNew');
       // Xử lý trường hợp không có dữ liệu ở đây
@@ -71,10 +72,10 @@ export const getDetailCompany = async (id) => {
   // }
 };
 
-export const editCompany = async (id, options) => {
-  const result = await patch(`company/${id}`, options);
+export const editCompany = async (id, values) => {
+  const result = await updateCompany(id, values);
   console.log(result);
-  return result;
+  return 1;
 };
 
 export const getAllCompany = async () => {

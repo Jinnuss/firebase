@@ -35,6 +35,8 @@ function InfoCompany() {
 
   const handleFinish = async (values) => {
     const response = await editCompany(idCompany, values);
+    console.log(response);
+    // const myArray = Object.keys(response).map(key => response[key]);
     if (response) {
       mess.success("Cập nhật thành công!");
       fetchApi();

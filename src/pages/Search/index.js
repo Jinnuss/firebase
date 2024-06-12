@@ -15,6 +15,7 @@ function Search() {
   useEffect(() => {
     const fetchApi = async () => {
       const response = await getAllJob();
+      console.log(response);
       if (response) {
         const newData = response.filter((item) => {
           const city = citySearch ? item.city?.includes(citySearch) : true;

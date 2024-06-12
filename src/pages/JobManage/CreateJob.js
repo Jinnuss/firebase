@@ -39,7 +39,8 @@ function CreateJob() {
   const handleFinish = async (values) => {
     values.idCompany = idCompany;
     values.createAt = getTimeCurrent();
-    const response = await createJob(values);
+    console.log(values);
+    const response = await createJob(values, values.idCompany, values.createAt);
     if (response) {
       form.resetFields();
       mess.open({

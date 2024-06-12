@@ -7,16 +7,20 @@ import JobItem from "../../components/JobItem";
 
 function SearchList(props) {
   const { data = [] } = props;
+  const myArray = Object.keys(data).map(key => data[key]);
+  console.log(myArray);
   const [dataFinal, setDataFinal] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
       const company = await getAllCompany();
-
-      const newData = data.map((item) => {
-        const infoCompany = company.find(
-          (itemCompany) => itemCompany.id == item.idCompany && itemCompany
+      const myArrayCompany = Object.keys(company).map(key => company[key]);
+      console.log(company);
+      const newData = myArray.map((item) => {
+        const infoCompany = myArrayCompany.find(
+          (itemCompany) => itemCompany.id == item.idCompany
         );
+        console.log(infoCompany);
         return {
           infoCompany: infoCompany,
           ...item,

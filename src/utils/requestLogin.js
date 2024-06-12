@@ -1,4 +1,4 @@
-import { getDatabase, ref, query, orderByChild, equalTo, onValue, set } from 'firebase/database';
+import { getDatabase, ref, query, orderByChild, equalTo, onValue, set, child, update, push, remove } from 'firebase/database';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
@@ -88,3 +88,55 @@ export const PostDBCreateCV = async (values, idJob, idCompany, creatAt) => {
         console.error('Error saving data:', error);
     }
 }
+export const PostDBCreateJob = async (values, idCompany, creatAt) => {
+    const id1 = Date.now();
+    console.log(values);
+    try {
+        await set(ref(db, 'jobs/' + id1), {
+            id: id1,
+            city: values.city,
+            name: values.name,
+            createAt: creatAt,
+            description: values.description,
+            idCompany: idCompany,
+            salary: values.salary,
+            status: true,
+            tags: values.tags
+        });
+        console.log('Data saved successfully!');
+    } catch (error) {
+        console.error('Error saving data:', error);
+    }
+}
+export const updateCompany = async (id, values) => {
+    const dbRef = ref(db, 'company/' + id);
+    update(dbRef, values)
+        .then(() => {
+            console.log('Data updated successfully');
+        })
+        .catch((error) => {
+            console.error('Error updating data:', error);
+        });
+
+}
+export const updateJobRequest = async (id, values) => {
+    const dbRef = ref(db, 'jobs/' + id);
+    update(dbRef, values)
+        .then(() => {
+            console.log('Data updated successfully');
+        })
+        .catch((error) => {
+            console.error('Error updating data:', error);
+        });
+
+}
+export const delJob = (id) => {
+    const dbRef = ref(db, 'jobs/' + id);
+    remove(dbRef)
+        .then(() => {
+            console.log('Data deleted successfully');
+        })
+        .catch((error) => {
+            console.error('Error deleting data:', error);
+        });
+};
