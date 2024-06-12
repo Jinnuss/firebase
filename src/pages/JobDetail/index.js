@@ -44,7 +44,8 @@ function JobDetail() {
     values.idJob = job.id;
     values.idCompany = job.infoCompany.id;
     values.createAt = getTimeCurrent();
-    const response = await createCV(values);
+    const response = await createCV(values, values.idJob, values.idCompany, values.createAt);
+    console.log(response);
     if (response) {
       form.resetFields();
       noti.success({

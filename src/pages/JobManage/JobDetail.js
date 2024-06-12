@@ -44,13 +44,13 @@ function JobDetail() {
             ))}
           </div>
           <div className="mb-20">
-            Mức lương: <strong>{data.salary}$</strong>
+            Mức lương: <strong style={{ color: "black" }}>{data.salary}$</strong>
           </div>
           <div className="mb-20">
-            Ngày tạo: <strong>{data.createAt}</strong>
+            Ngày tạo: <strong style={{ color: "black" }}>{data.createAt}</strong>
           </div>
           <div className="mb-20">
-            Cập nhật: <strong>{data.updateAt}</strong>
+            Cập nhật: <strong style={{ color: "black" }}>{data.updateAt}</strong>
           </div>
           <div className="mb-20">
             <span>Thành phố: </span>

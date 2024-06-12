@@ -31,14 +31,14 @@ function JobStatistic() {
     <>
       {data && (
         <Card title="Job" className="mb-20" size="small">
-          <div>
-            Số lượng job: <strong>{data.total}</strong>
+          <div >
+            Số lượng job: <strong style={{ color: "black" }}>{data.total}</strong>
           </div>
           <div>
-            Job đang bật: <strong>{data.statusTrue}</strong>
+            Job đang bật: <strong style={{ color: "black" }}>{data.statusTrue}</strong>
           </div>
           <div>
-            Job đang tắt: <strong>{data.statusFalse}</strong>
+            Job đang tắt: <strong style={{ color: "black" }}>{data.statusFalse}</strong>
           </div>
         </Card>
       )}

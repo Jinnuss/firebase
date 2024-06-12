@@ -23,16 +23,16 @@ function InfoCompany() {
       {info && (
         <Card title="Thông tin công ty" size="small">
           <div>
-            Tên công ty: <strong>{info.companyName}</strong>
+            Tên công ty: <strong style={{ color: "black" }}>{info.companyName}</strong>
           </div>
           <div>
-            Email: <strong>{info.email}</strong>
+            Email: <strong style={{ color: "black" }}>{info.email}</strong>
           </div>
           <div>
-            Số điện thoại: <strong>{info.phone}</strong>
+            Số điện thoại: <strong style={{ color: "black" }}>{info.phone}</strong>
           </div>
           <div>
-            Số nhân viên: <strong>{info.quantityPeople}</strong>
+            Số nhân viên: <strong style={{ color: "black" }}>{info.quantityPeople}</strong>
           </div>
         </Card>
       )}

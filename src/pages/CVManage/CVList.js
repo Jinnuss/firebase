@@ -10,6 +10,7 @@ import DeleteCV from "./DeleteCV";
 
 function CVList(props) {
   const idCompany = getCookie("id");
+  console.log(idCompany);
   const { className = "" } = props;
   const [listCV, setListCV] = useState([]);
 

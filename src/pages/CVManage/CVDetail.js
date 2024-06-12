@@ -37,20 +37,20 @@ function CVDetail() {
         <>
           <Card title={`Ứng viên: ${cv.name}`} className="mt-20">
             <div className="mb-20">
-              Ngày gửi: <strong>{cv.createAt}</strong>
+              Ngày gửi: <strong style={{ color: "black" }}>{cv.createAt}</strong>
             </div>
             <div className="mb-20">
-              Số điện thoại: <strong>{cv.phone}</strong>
+              Số điện thoại: <strong style={{ color: "black" }}>{cv.phone}</strong>
             </div>
             <div className="mb-20">
-              Email: <strong>{cv.email}</strong>
+              Email: <strong style={{ color: "black" }}>{cv.email}</strong>
             </div>
             <div className="mb-20">
-              Thành phố ứng tuyển: <strong>{cv.city}</strong>
+              Thành phố ứng tuyển: <strong style={{ color: "black" }}>{cv.city}</strong>
             </div>
             <div className="mb-20">
               <div className="mb-10">Giới thiệu bản thân:</div>
-              <div>{cv.description}</div>
+              <div style={{ color: "black" }}>{cv.description}</div>
             </div>
             <div className="mb-20">
               <div className="mb-10">Link project:</div>
@@ -68,11 +68,11 @@ function CVDetail() {
               ))}
             </div>
             <div className="mb-20">
-              Mức lương: <strong>{job.salary}$</strong>
+              Mức lương: <strong style={{ color: "black" }}>{job.salary}$</strong>
             </div>
             <div className="mb-20">
               <div className="mb-10">Mô tả:</div>
-              <div>{job.description}</div>
+              <div >{job.description}</div>
             </div>
           </Card>
         </>

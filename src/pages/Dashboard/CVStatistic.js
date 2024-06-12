@@ -32,13 +32,13 @@ function CVStatistic() {
       {data && (
         <Card title="CV" className="mb-20" size="small">
           <div>
-            Số lượng CV: <strong>{data.total}</strong>
+            Số lượng CV: <strong style={{ color: "black" }}>{data.total}</strong>
           </div>
           <div>
-            CV đã đọc: <strong>{data.statusTrue}</strong>
+            CV đã đọc: <strong style={{ color: "black" }}>{data.statusTrue}</strong>
           </div>
           <div>
-            CV chưa đọc: <strong>{data.statusFalse}</strong>
+            CV chưa đọc: <strong style={{ color: "black" }}>{data.statusFalse}</strong>
           </div>
         </Card>
       )}

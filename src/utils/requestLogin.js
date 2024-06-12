@@ -32,7 +32,6 @@ export const fetchData = (db, path, childKey, value) => {
         });
     });
 }
-
 export const GetdbLogin = async (path, childKey, value) => {
     try {
         const resultNew = await fetchData(db, path, childKey, value);
@@ -62,6 +61,27 @@ export const PostDBRegister = async (path, values) => {
             quantityPeople: 90,
             website: 'Link website công ty',
             workingTime: 'Thời gian làm việc',
+        });
+        console.log('Data saved successfully!');
+    } catch (error) {
+        console.error('Error saving data:', error);
+    }
+}
+export const PostDBCreateCV = async (values, idJob, idCompany, creatAt) => {
+    const id1 = Date.now();
+    console.log(values);
+    try {
+        await set(ref(db, 'cv/' + id1), {
+            id: id1,
+            name: values.name,
+            phone: values.phone,
+            createAt: creatAt,
+            description: 'Miêu tả Bản thân',
+            email: values.email,
+            idCompany: idCompany,
+            idJob: idJob,
+            linkProject: values.linkProject,
+            statusRead: true
         });
         console.log('Data saved successfully!');
     } catch (error) {
