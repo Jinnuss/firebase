@@ -21,7 +21,7 @@ function Register() {
     } else {
       const result = await company.createCompany(values);
       console.log(result);
-
+      alert('Đăng ký thành công!');
       navigate("/login");
     }
   };
