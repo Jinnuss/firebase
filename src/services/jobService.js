@@ -27,8 +27,28 @@ export const getListJob = async (id) => {
     const newData = myArray.filter(item => {
       return parseInt(item.idCompany) === parseInt(id);
     })
-    console.log(newData);
+    // const newArray = newData.filter(item => {
+    //   return item.status === true;
+    // })
+    // console.log(newArray);
     return newData;
+    // Sử dụng data ở đây
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+export const getListJobHome = async (id) => {
+  try {
+    const data = await Getdb(`jobs`);
+    const myArray = Object.keys(data).map(key => data[key]);
+    const newData = myArray.filter(item => {
+      return parseInt(item.idCompany) === parseInt(id);
+    })
+    const newArray = newData.filter(item => {
+      return item.status === true;
+    })
+    console.log(newArray);
+    return newArray;
     // Sử dụng data ở đây
   } catch (error) {
     console.error('Error:', error);
@@ -49,6 +69,7 @@ export const getAllJob = async () => {
   try {
     const data = await Getdb(`jobs`);
     const myArray = Object.keys(data).map(key => data[key]);
+    console.log(myArray);
     console.log(myArray);
     return myArray;
     // Sử dụng data ở đây

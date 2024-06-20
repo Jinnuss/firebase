@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDetailCompany } from "../../services/companyService";
-import { getListJob } from "../../services/jobService";
+import { getListJob, getListJobHome } from "../../services/jobService";
 import { Col, Row } from "antd";
 import JobItem from "../../components/JobItem";
 import GoBack from "../../components/GoBack";
@@ -25,7 +25,7 @@ function CompanyDetail() {
 
   useEffect(() => {
     const fetchApi = async () => {
-      const response = await getListJob(params.id);
+      const response = await getListJobHome(params.id);
       console.log(response);
       setJobs(response);
     };
