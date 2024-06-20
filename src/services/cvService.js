@@ -1,5 +1,5 @@
 import { Getdb, del, get1, patch, post } from "../utils/request";
-import { GetdbLogin, PostDBCreateCV, delCV } from "../utils/requestLogin";
+import { GetdbLogin, PostDBCreateCV, delCV, updateStatusCv } from "../utils/requestLogin";
 
 export const getListCV = async (id) => {
   // const result = await get1(`cv?idCompany=${id}`);
@@ -32,8 +32,8 @@ export const getDetailCV = async (id) => {
   }
 };
 
-export const changeStatusCV = async (id, options) => {
-  const result = await patch(`cv/${id}`, options);
+export const changeStatusCV = async (id, values) => {
+  const result = await updateStatusCv(id, values);
   return result;
 };
 

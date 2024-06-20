@@ -130,6 +130,18 @@ export const updateJobRequest = async (id, values) => {
         });
 
 }
+
+export const updateStatusCv = async (id, values) => {
+    const dbRef = ref(db, 'cv/' + id);
+    update(dbRef, values)
+        .then(() => {
+            console.log('Data updated successfully');
+        })
+        .catch((error) => {
+            console.error('Error updating data:', error);
+        });
+
+}
 export const delJob = (id) => {
     const dbRef = ref(db, 'jobs/' + id);
     remove(dbRef)
