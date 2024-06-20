@@ -81,7 +81,7 @@ export const PostDBCreateCV = async (values, idJob, idCompany, creatAt) => {
             idCompany: idCompany,
             idJob: idJob,
             linkProject: values.linkProject,
-            statusRead: true
+            statusRead: false
         });
         console.log('Data saved successfully!');
     } catch (error) {
